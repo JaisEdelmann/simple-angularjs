@@ -24,21 +24,27 @@
             <input type="search" ng-model="q" placeholder="filter channels..." />
             <br /><br />
             <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <td></td>
-                        <td><a href="" ng-click="predicate ='Title'">Title</a></td>
-                        <td><a href="" ng-click="predicate ='Url'">Url</a></td>
-                        <td></td>
-                    <tr />
-                </thead>
-                </tr>
+               <thead>
+                   <tr>
+                       <td></td>
+                       <td>Title</td>
+                       <td>Time</td>
+                   </tr>
+               </thead>
                 <tbody>
-                    <tr ng-repeat="channel in channels | filter: NoWebChannels | filter: q | orderBy: predicate">
-                        <td><img src="{{channel.PrimaryImageUri}}" height="25"></td>
-                        <td>{{channel.Title}}</td>
-                        <td>{{channel.Url}}</td>
-                        <td><a target="_blank" href="http://www.dr.dk/tv/live/{{channel.Title |lowercase}}" class="btn btn-primary">Watch now</a> </td>
+                    <tr ng-repeat="channel in channels | filter:IsBroadCasting | filter: q">
+                        <td>{{channel.ChannelSlug}}</td>
+                        <td>{{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small></td>
+                        <td>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}
+                        <td>
+                        <td><a class="btn btn-success" target="_blank" href="http://www.dr.dk/tv/live/{{channel.ChannelSlug}}">Watch now</a> </td>
+                    </tr>
+                    <tr ng-repeat="channel in channels | filter:IsNotBroadCasting | filter: q">
+                        <td>{{channel.ChannelSlug}}</td>
+                        <td>{{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small></td>
+                        <td>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}
+                        <td>
+                        <td><a class="btn btn-danger">Not broadcasting</a> </td>
                     </tr>
                 </tbody>
             </table>
