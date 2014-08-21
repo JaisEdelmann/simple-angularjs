@@ -29,21 +29,20 @@
                        <td></td>
                        <td>Title</td>
                        <td>Time</td>
+                       <td></td>
                    </tr>
                </thead>
                 <tbody>
                     <tr ng-repeat="channel in channels | filter:IsBroadCasting | filter: q">
                         <td>{{channel.ChannelSlug}}</td>
                         <td>{{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small></td>
-                        <td>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}
-                        <td>
+                        <td>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}</td>
                         <td><a class="btn btn-success" target="_blank" href="http://www.dr.dk/tv/live/{{channel.ChannelSlug}}">Watch now</a> </td>
                     </tr>
                     <tr ng-repeat="channel in channels | filter:IsNotBroadCasting | filter: q">
                         <td>{{channel.ChannelSlug}}</td>
                         <td>{{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small></td>
-                        <td>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}
-                        <td>
+                        <td>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}</td>
                         <td><a class="btn btn-danger">Not broadcasting</a> </td>
                     </tr>
                 </tbody>
