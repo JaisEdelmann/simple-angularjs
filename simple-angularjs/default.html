@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html ng-app="simpleapp">
+<head>
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-resource.min.js"></script>
+    <script src="Scripts/jquery-1.9.1.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/app.js"></script>
+
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+
+    <title></title>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header" ng-controller="HelloController as HelloCtrl">
+            <h1>{{hello}}</h1>
+            <p>{{description}}</p>
+        </div>
+        <div ng-controller="TvController as TvCtrl">
+            <h2>{{channelsheadline}}</h2>
+            <br />
+            <input type="search" ng-model="q" placeholder="filter channels..." />
+            <br /><br />
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td><a href="" ng-click="predicate ='Title'">Title</a></td>
+                        <td><a href="" ng-click="predicate ='Url'">Url</a></td>
+                        <td></td>
+                    <tr />
+                </thead>
+                </tr>
+                <tbody>
+                    <tr ng-repeat="channel in channels | filter: NoWebChannels | filter: q | orderBy: predicate">
+                        <td><img src="{{channel.PrimaryImageUri}}" height="25"></td>
+                        <td>{{channel.Title}}</td>
+                        <td>{{channel.Url}}</td>
+                        <td><a target="_blank" href="http://www.dr.dk/tv/live/{{channel.Title |lowercase}}" class="btn btn-primary">Watch now</a> </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

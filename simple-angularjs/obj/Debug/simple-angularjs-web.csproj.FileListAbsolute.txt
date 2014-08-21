@@ -1,0 +1,6 @@
+C:\development\applications\own\simple-angularjs\simple-angularjs\simple-angularjs\bin\simple-angularjs.dll.config
+C:\development\applications\own\simple-angularjs\simple-angularjs\simple-angularjs\bin\simple-angularjs.dll
+C:\development\applications\own\simple-angularjs\simple-angularjs\simple-angularjs\bin\simple-angularjs.pdb
+C:\development\applications\own\simple-angularjs\simple-angularjs\simple-angularjs\obj\Debug\simple-angularjs-web.csprojResolveAssemblyReference.cache
+C:\development\applications\own\simple-angularjs\simple-angularjs\simple-angularjs\obj\Debug\simple-angularjs.dll
+C:\development\applications\own\simple-angularjs\simple-angularjs\simple-angularjs\obj\Debug\simple-angularjs.pdb
