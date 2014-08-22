@@ -9,7 +9,7 @@
 
     <link href="Content/bootstrap.min.css" rel="stylesheet" />
     <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
-
+    <link href="Content/app.css" rel="stylesheet" />
     <title></title>
 </head>
 <body>
@@ -26,7 +26,7 @@
             <table class="table table-striped">
                <thead>
                    <tr>
-                       <td></td>
+                       <td>Channel</td>
                        <td>Title</td>
                        <td>Time</td>
                        <td></td>
@@ -36,13 +36,19 @@
                     <tr ng-repeat="channel in channels | filter:IsBroadCasting | filter: q">
                         <td>{{channel.ChannelSlug}}</td>
                         <td>{{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small></td>
-                        <td>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}</td>
+                        <td width="250">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{channel.procentage}}" aria-valuemin="0" aria-valuemax="100" style="width:{{channel.procentage}}%;">
+                                </div>
+                                <span>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}</span>        
+                            </div>
+                        </td>
                         <td><a class="btn btn-success" target="_blank" href="http://www.dr.dk/tv/live/{{channel.ChannelSlug}}">Watch now</a> </td>
                     </tr>
-                    <tr ng-repeat="channel in channels | filter:IsNotBroadCasting | filter: q">
+                   <tr ng-repeat="channel in channels | filter:IsNotBroadCasting | filter: q">
                         <td>{{channel.ChannelSlug}}</td>
-                        <td>{{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small></td>
-                        <td>{{channel.Now.StartTime | date:'HH:mm'}} - {{channel.Now.EndTime | date:'HH:mm'}}</td>
+                        <td></small></td>
+                        <td></td>
                         <td><a class="btn btn-danger">Not broadcasting</a> </td>
                     </tr>
                 </tbody>

@@ -7,32 +7,27 @@ simpleapp.controller('HelloController', function ($scope) {
 
 simpleapp.controller('TvController', function ($scope, $http) {
     $scope.channelsheadline = "Channels";
-
+    $scope.IsBroadCasting = function (channel) {
+        if (channel.Now)
+            return true;
+        return false;
+    }
     $scope.IsNotBroadCasting = function (channel) {
         if (channel.Now)
             return false;
         return true;
-    }
-
-    $scope.IsBroadCasting = function (channel) {
-      if(channel.Now)
-          return true;
-      return false;
-      
-    }
+    }  
     $http.get('http://www.dr.dk/mu-online/api/1.0/schedule/nownext-for-all-active-dr-tv-channels').success(function (data) {
+        for (var i = 0; i < data.length; i++) {
+            var CurrentTime =  parseInt(new Date().getTime().toString());
+            var StartTime = parseInt(new Date(data[i].Now.StartTime).getTime().toString());
+            var EndTime =  parseInt(new Date(data[i].Now.EndTime).getTime().toString());
+            var a = (CurrentTime - StartTime);
+            var b = (EndTime - StartTime);
+            data[i].procentage = Math.round((a / b * 100));
+        }
         $scope.channels = data;
 
         
     });
 });
-
-
-/*$http.get('http://www.dr.dk/mu-online/api/1.0/channel/all-active-dr-tv-channels').success(function (data) {
-       for (var i = 0; i < data.length; i++) {
-           if (data[i].Title == "DR Update") data.splice(i, 1);
-           data[i].Title = data[i].Title.replace(" ", "-");
-       }
-       $scope.channels = data;
-   });
-   */
