@@ -35,7 +35,13 @@
                 <tbody>
                     <tr ng-repeat="channel in channels | filter:IsBroadCasting | filter: q">
                         <td>{{channel.ChannelSlug}}</td>
-                        <td>{{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small></td>
+                        <td>
+                            {{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small><br/>                           
+                            <span class="small" style="color:#cacaca;" ng-repeat="show in channel.Next" ng-show="$first">
+                                Next:
+                                    {{show.Title}}
+                            </span>
+                        </td>
                         <td width="250">
                             <div class="progress">
                                 <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{channel.procentage}}" aria-valuemin="0" aria-valuemax="100" style="width:{{channel.procentage}}%;">
@@ -44,7 +50,7 @@
                             </div>
                         </td>
                         <td><a class="btn btn-success" target="_blank" href="http://www.dr.dk/tv/live/{{channel.ChannelSlug}}">Watch now</a> </td>
-                    </tr>
+                    </divtr>
                    <tr ng-repeat="channel in channels | filter:IsNotBroadCasting | filter: q">
                         <td>{{channel.ChannelSlug}}</td>
                         <td></small></td>
