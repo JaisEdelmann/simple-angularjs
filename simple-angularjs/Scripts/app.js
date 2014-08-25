@@ -30,15 +30,13 @@ simpleapp.controller('TvController', function ($scope, $http, $q) {
             });
             epgdatalist[i].ChannelInformation = test[0];
 
-            try {
+            if (epgdatalist[i].Now) {
                 var CurrentTime = parseInt(new Date().getTime().toString());
                 var StartTime = parseInt(new Date(epgdatalist[i].Now.StartTime).getTime().toString());
                 var EndTime = parseInt(new Date(epgdatalist[i].Now.EndTime).getTime().toString());
                 var a = (CurrentTime - StartTime);
                 var b = (EndTime - StartTime);
                 epgdatalist[i].procentage = Math.round((a / b * 100));
-            }
-            catch (err) {
             }
         }
         $scope.channels = epgdatalist;

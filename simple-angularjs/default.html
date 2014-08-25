@@ -53,10 +53,10 @@
                         <td><a class="btn btn-success" target="_blank" href="http://www.dr.dk/tv/live/{{channel.ChannelSlug}}">Watch now</a> </td>
                     </divtr>
                    <tr ng-repeat="channel in channels | filter:IsNotBroadCasting | filter: q">
-                        <td><img src="{{channel.ChannelInformation.PrimaryImageUri}}" title="{{channel.ChannelSlug}}" width="50" /></td>
+                       <td><img src="{{channel.ChannelInformation.PrimaryImageUri}}" title="{{channel.ChannelSlug}}" width="50" /></td>
                         <td></small></td>
                         <td></td>
-                        <td><a class="btn btn-danger">Not broadcasting</a> </td>
+                        <td><span class="btn btn-danger">Watch now</span> </td>
                     </tr>
                 </tbody>
             </table>
