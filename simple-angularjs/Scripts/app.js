@@ -42,22 +42,5 @@ simpleapp.controller('TvController', function ($scope, $http, $q) {
         $scope.channels = epgdatalist;
     }, function (error) {
         console.log(error);
-    });
-
-    
-
-    //$http.get('http://www.dr.dk/mu-online/api/1.0/schedule/nownext-for-all-active-dr-tv-channels').success(function (data) {
-    //    for (var i = 0; i < data.length; i++) {
-    //        var CurrentTime = parseInt(new Date().getTime().toString());
-    //        var StartTime = parseInt(new Date(data[i].Now.StartTime).getTime().toString());
-    //        var EndTime = parseInt(new Date(data[i].Now.EndTime).getTime().toString());
-    //        var a = (CurrentTime - StartTime);
-    //        var b = (EndTime - StartTime);
-    //        data[i].procentage = Math.round((a / b * 100));
-    //        data[i].channelinfo = [];
-    //    }
-    //    $scope.channels = data;
-    //});
-
-     
+    });    
 });
