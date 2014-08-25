@@ -1,4 +1,5 @@
 simple-angularjs
 ================
+Simple application, that integrates with DR's Rest API. 
 
-Public demo of a small AngularJS project that integrates with Danmarks Radio MU REST API
+The application is based on AngularJS,Jquery,Bootstrap,HTml5,CSS3
