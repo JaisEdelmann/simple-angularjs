@@ -28,19 +28,25 @@ simpleapp.controller('TvController', function ($scope, $http, $q) {
             var test = $.grep(channeldatalist, function (e) {
                 return e.Slug == epgdatalist[i].ChannelSlug;
             });
-
             epgdatalist[i].ChannelInformation = test[0];
-            var CurrentTime = parseInt(new Date().getTime().toString());
-            var StartTime = parseInt(new Date(epgdatalist[i].Now.StartTime).getTime().toString());
-            var EndTime = parseInt(new Date(epgdatalist[i].Now.EndTime).getTime().toString());
-            var a = (CurrentTime - StartTime);
-            var b = (EndTime - StartTime);
-            epgdatalist[i].procentage = Math.round((a / b * 100));
+
+            try {
+                var CurrentTime = parseInt(new Date().getTime().toString());
+                var StartTime = parseInt(new Date(epgdatalist[i].Now.StartTime).getTime().toString());
+                var EndTime = parseInt(new Date(epgdatalist[i].Now.EndTime).getTime().toString());
+                var a = (CurrentTime - StartTime);
+                var b = (EndTime - StartTime);
+                epgdatalist[i].procentage = Math.round((a / b * 100));
+            }
+            catch (err) {
+            }
         }
-
-
         $scope.channels = epgdatalist;
+        
+        
+        
     }, function (error) {
         console.log(error);
+        alert("error");
     });    
 });

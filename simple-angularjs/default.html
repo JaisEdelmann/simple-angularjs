@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html ng-app="simpleapp">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="Scripts/angular.min.js"></script>
     <script src="Scripts/angular-resource.min.js"></script>
     <script src="Scripts/jquery-1.9.1.min.js"></script>
@@ -36,7 +37,7 @@
                     <tr ng-repeat="channel in channels | filter:IsBroadCasting | filter: q">
                         <td><img src="{{channel.ChannelInformation.PrimaryImageUri}}" title="{{channel.ChannelSlug}}" width="50" /></td>
                         <td>
-                            {{channel.Now.Title}}<br /><small>{{channel.Now.Subtitle}}</small><br/>                           
+                            {{channel.Now.Title}}<br /><small style="display:none;" ng-show="channel.Now.Subtitle != ''">{{channel.Now.Subtitle}}<br /></small> 
                             <span class="small" style="color:#cacaca;" ng-repeat="show in channel.Next" ng-show="$first">
                                 Next:
                                     {{show.Title}}
@@ -52,7 +53,7 @@
                         <td><a class="btn btn-success" target="_blank" href="http://www.dr.dk/tv/live/{{channel.ChannelSlug}}">Watch now</a> </td>
                     </divtr>
                    <tr ng-repeat="channel in channels | filter:IsNotBroadCasting | filter: q">
-                        <td>{{channel.ChannelSlug}}</td>
+                        <td><img src="{{channel.ChannelInformation.PrimaryImageUri}}" title="{{channel.ChannelSlug}}" width="50" /></td>
                         <td></small></td>
                         <td></td>
                         <td><a class="btn btn-danger">Not broadcasting</a> </td>
