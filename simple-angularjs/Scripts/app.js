@@ -45,6 +45,5 @@ simpleapp.controller('TvController', function ($scope, $http, $q) {
         
     }, function (error) {
         console.log(error);
-        alert("error");
     });    
 });
