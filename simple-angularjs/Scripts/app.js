@@ -18,8 +18,8 @@ simpleapp.controller('TvController', function ($scope, $http, $q) {
         return true;
     }
 
-    var promiseEpgData = $http.get('http://www.dr.dk/mu-online/api/1.0/schedule/nownext-for-all-active-dr-tv-channels');
-    var promiseChannelData= $http.get('http://www.dr.dk/mu-online/api/1.0/channel/all-active-dr-tv-channels');
+    var promiseEpgData = $http.get('https://www.dr.dk/mu-online/api/1.0/schedule/nownext-for-all-active-dr-tv-channels');
+    var promiseChannelData= $http.get('https://www.dr.dk/mu-online/api/1.0/channel/all-active-dr-tv-channels');
 
     $q.all([promiseEpgData, promiseChannelData]).then(function (resultarray) {
         var epgdatalist = resultarray[0].data;
