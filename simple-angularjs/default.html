@@ -28,8 +28,7 @@
                 <thead>
                     <tr>
                         <td>Channel</td>
-                        <td width="50">Program</td>
-                        <td></td>
+                        <td>Program</td>
                         <td>Time</td>
                         <td></td>
                     </tr>
@@ -37,9 +36,7 @@
                 <tbody>
                     <tr ng-repeat="channel in channels | filter:IsBroadCasting | filter: q">
                         <td><img src="{{channel.ChannelInformation.PrimaryImageUri}}" title="{{channel.ChannelSlug}}" width="50" /></td>
-                        <td><img src="{{channel.Now.ProgramCard.PrimaryImageUri}}" width="50" /></td>
                         <td>
-
                             {{channel.Now.Title}}<br /><small style="display:none;" ng-show="channel.Now.Subtitle != ''">{{channel.Now.Subtitle}}<br /></small>
                             <span class="small" style="color:#cacaca;" ng-repeat="show in channel.Next" ng-show="$first">
                                 Next:
@@ -60,7 +57,6 @@
 
                     <tr ng-repeat="channel in channels | filter:IsNotBroadCasting | filter: q">
                         <td><img src="{{channel.ChannelInformation.PrimaryImageUri}}" title="{{channel.ChannelSlug}}" width="50" /></td>
-                        <td></td>
                         <td></small></td>
                         <td></td>
                         <td><span class="btn btn-danger">Watch now</span> </td>
