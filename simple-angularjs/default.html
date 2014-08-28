@@ -17,12 +17,14 @@
     <div class="container">
         <div class="page-header jumbotron" ng-controller="HelloController as HelloCtrl">
             <h1>{{hello}}</h1>
+            
             <p>{{description}}</p>
         </div>
         <div ng-controller="TvController as TvCtrl">
             <h2>{{channelsheadline}}</h2>
             <br />
-            <input type="search" ng-model="q" placeholder="filter channels..." />
+            <input type="search" ng-model="q" placeholder="filter channels..." /><br/>
+            <small ng-show="q">filtering by: {{q}}</small>
             <br /><br />
             <table class="table table-striped">
                 <thead>
@@ -37,7 +39,7 @@
                     <tr ng-repeat="channel in channels | filter:IsBroadCasting | filter: q">
                         <td><img src="{{channel.ChannelInformation.PrimaryImageUri}}" title="{{channel.ChannelSlug}}" width="50" /></td>
                         <td>
-                            {{channel.Now.Title}}<br /><small style="display:none;" ng-show="channel.Now.Subtitle != ''">{{channel.Now.Subtitle}}<br /></small>
+                            {{channel.Now.Title}}<br /><small ng-show="channel.Now.Subtitle">{{channel.Now.Subtitle}}<br /></small>
                             <span class="small" style="color:#cacaca;" ng-repeat="show in channel.Next" ng-show="$first">
                                 Next:
                                 {{show.Title}}
